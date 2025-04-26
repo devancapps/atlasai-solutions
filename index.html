@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtlasAI Solutions - AI Services for Austin Businesses</title>
+    <meta name="description" content="AI-powered solutions to help local Austin businesses automate and grow. Book your free consultation today.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        .service-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f3f4f6 100%);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            background: linear-gradient(145deg, #ffffff 0%, #e7eaf4 100%);
+        }
+
+        .service-card i {
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover i {
+            transform: scale(1.2);
+            color: #4f46e5;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 50%, #2563eb 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #4f46e5, #3b82f6);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .btn-primary:hover::after {
+            transform: translateX(100%);
+        }
+
+        .stats-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f3f4f6 100%);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating-image {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Mailchimp form styling */
+        #mc_embed_signup {
+            background: transparent;
+            clear: left;
+            font: inherit;
+            width: 100%;
+        }
+        #mc_embed_signup .mc-field-group {
+            padding-bottom: 1rem;
+        }
+        #mc_embed_signup label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: white;
+        }
+        #mc_embed_signup input[type="email"],
+        #mc_embed_signup input[type="text"] {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 0.375rem;
+            border: 1px solid #e5e7eb;
+        }
+        #mc_embed_signup .button {
+            background: linear-gradient(to right, #ffffff, #f3f4f6);
+            color: #3b82f6;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: auto;
+            min-width: 200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1;
+            height: 48px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        #mc_embed_signup .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px -3px rgba(59, 130, 246, 0.2);
+            background: linear-gradient(to right, #f3f4f6, #ffffff);
+        }
+        #mc_embed_signup h2 {
+            display: none;
+        }
+        #mc_embed_signup .indicates-required {
+            display: none;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-robot text-blue-500 text-2xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-900">AtlasAI Solutions</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#services" class="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium">Services</a>
+                    <a href="#how-it-works" class="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium">How It Works</a>
+                    <a href="#about" class="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium">About</a>
+                    <a href="#testimonials" class="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium">Testimonials</a>
+                </div>
+                <div class="flex items-center">
+                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">
+                        Free Consultation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section py-20 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="md:w-1/2">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+                        AI-Powered Growth for Austin Businesses
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 opacity-90">
+                        Automate, optimize, and scale your local business with our specialized AI solutions.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#services" class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-md text-lg font-semibold transition duration-150 ease-in-out">
+                            Explore Services
+                        </a>
+                        <a href="#contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-md text-lg font-semibold transition duration-150 ease-in-out">
+                            Free Consultation
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:block md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="AI and business growth" class="rounded-lg shadow-xl floating-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Our AI Services</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Choose from our specialized AI solutions designed for Austin businesses
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service cards will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">How It Works</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Getting started with our AI solutions is simple and straightforward
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="how-it-works-step p-6 bg-white rounded-lg shadow-sm">
+                    <h3 class="text-xl font-bold mb-4">Choose Your Service</h3>
+                    <p class="text-gray-600">
+                        Browse our selection of AI services and pick the one that best fits your business needs.
+                    </p>
+                </div>
+                <div class="how-it-works-step p-6 bg-white rounded-lg shadow-sm">
+                    <h3 class="text-xl font-bold mb-4">Book Your Consultation</h3>
+                    <p class="text-gray-600">
+                        Schedule a free 30-minute consultation to discuss your specific requirements and goals.
+                    </p>
+                </div>
+                <div class="how-it-works-step p-6 bg-white rounded-lg shadow-sm">
+                    <h3 class="text-xl font-bold mb-4">Watch AI Grow Your Business</h3>
+                    <p class="text-gray-600">
+                        We implement the solution and you enjoy the benefits of automation and increased efficiency.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:space-x-12">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Our team" class="rounded-lg shadow-lg">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">About AtlasAI Solutions</h2>
+                    <p class="text-lg text-gray-600 mb-4">
+                        Founded in Austin, Texas, AtlasAI Solutions is dedicated to helping local businesses harness the power of artificial intelligence to streamline operations, enhance customer experiences, and drive growth.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Our team of AI specialists and business consultants brings together technical expertise and deep understanding of the Austin business landscape to deliver solutions that truly make a difference.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="bg-blue-100 p-4 rounded-lg">
+                            <i class="fas fa-award text-blue-600 text-2xl mb-2"></i>
+                            <h3 class="font-bold">5+ Years Experience</h3>
+                        </div>
+                        <div class="bg-blue-100 p-4 rounded-lg">
+                            <i class="fas fa-map-marker-alt text-blue-600 text-2xl mb-2"></i>
+                            <h3 class="font-bold">Austin-Based</h3>
+                        </div>
+                        <div class="bg-blue-100 p-4 rounded-lg">
+                            <i class="fas fa-handshake text-blue-600 text-2xl mb-2"></i>
+                            <h3 class="font-bold">50+ Clients</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Don't just take our word for it - hear from businesses we've helped
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        "The AI email automation system AtlasAI implemented saved us 15 hours per week and increased our response rate by 40%. Game changer for our small team."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-blue-600 font-bold">JD</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">John D.</h4>
+                            <p class="text-gray-500 text-sm">Owner, Austin Dental Care</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        "Our social media engagement tripled after implementing AtlasAI's content generator. We're getting more local customers than ever before."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-blue-600 font-bold">SM</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Sarah M.</h4>
+                            <p class="text-gray-500 text-sm">Marketing Director, Hill Country Cafe</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">
+                        "The AI customer service bot handles 80% of our inquiries, allowing our team to focus on complex issues. ROI was achieved in just 2 months."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mr-4">
+                            <span class="text-blue-600 font-bold">RT</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Robert T.</h4>
+                            <p class="text-gray-500 text-sm">CEO, Austin Tech Services</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-20 bg-blue-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold mb-6">Ready to Transform Your Business with AI?</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto opacity-90">
+                Schedule your free 30-minute consultation to discuss how our AI solutions can work for your Austin business.
+            </p>
+            <button id="book-consultation-btn" class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-md text-lg font-semibold transition duration-150 ease-in-out">
+                Book Free Consultation
+            </button>
+            
+            <div class="mt-12 max-w-md mx-auto">
+                <p class="mb-4">Not ready to book yet? Get our free guide:</p>
+                
+                <!-- Mailchimp Form -->
+                <div id="mc_embed_signup">
+                    <form action="https://app.us4.list-manage.com/subscribe/post?u=85f4a46b7d023c428aee2d18d&amp;id=db3c6576ba&amp;f_id=00c067e8f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                        <div id="mc_embed_signup_scroll">
+                            <div class="mc-field-group">
+                                <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
+                                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value="">
+                            </div>
+                            <div class="mc-field-group">
+                                <label for="mce-FNAME">Company Name</label>
+                                <input type="text" name="FNAME" class="text" id="mce-FNAME" value="">
+                            </div>
+                            <div id="mce-responses" class="clear">
+                                <div class="response" id="mce-error-response" style="display: none;"></div>
+                                <div class="response" id="mce-success-response" style="display: none;"></div>
+                            </div>
+                            <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                                <input type="text" name="b_85f4a46b7d023c428aee2d18d_db3c6576ba" tabindex="-1" value="">
+                            </div>
+                            <div class="clear">
+                                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Get Free Guide">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+                <script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4 flex items-center">
+                        <i class="fas fa-robot text-blue-400 mr-2"></i> AtlasAI Solutions
+                    </h3>
+                    <p class="text-gray-400">
+                        AI-powered solutions for Austin businesses to automate, optimize, and grow.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Marketing AI</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Customer Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Operations</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">All Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white">Testimonials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white text-xl"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    <p class="mt-4 text-gray-400">
+                        <i class="fas fa-map-marker-alt mr-2"></i> Austin, Texas
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 AtlasAI Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Service Modal -->
+    <div id="service-modal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-overlay absolute inset-0"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-screen overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 id="modal-service-title" class="text-2xl font-bold"></h3>
+                            <p id="modal-service-category" class="text-blue-600 font-medium"></p>
+                        </div>
+                        <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="flex items-center mb-6">
+                        <div id="modal-service-icon" class="text-4xl mr-4"></div>
+                        <div>
+                            <p id="modal-service-description" class="text-gray-700"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                        <h4 class="font-bold mb-2">Key Benefits:</h4>
+                        <ul id="modal-service-benefits" class="list-disc pl-5 space-y-1"></ul>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-bold mb-2">Pricing:</h4>
+                        <p id="modal-service-pricing" class="text-gray-700"></p>
+                    </div>
+                    
+                    <div class="flex justify-end space-x-4">
+                        <button id="modal-book-btn" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium transition duration-150 ease-in-out">
+                            Book Consultation
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calendly Modal -->
+    <div id="calendly-modal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-overlay absolute inset-0"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+            <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-screen overflow-y-auto">
+                <div class="p-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-xl font-bold">Schedule Your Consultation</h3>
+                        <button id="close-calendly" class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div id="calendly-container" class="calendly-inline-widget" style="min-width:320px;height:700px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // Add data-aos attributes to elements
+        document.querySelectorAll('.service-card').forEach((card, index) => {
+            card.setAttribute('data-aos', 'fade-up');
+            card.setAttribute('data-aos-delay', (index * 100).toString());
+        });
+
+        document.querySelectorAll('.stats-card').forEach((card, index) => {
+            card.setAttribute('data-aos', 'fade-up');
+            card.setAttribute('data-aos-delay', (index * 100).toString());
+        });
+
+        document.querySelectorAll('.testimonial-card').forEach((card, index) => {
+            card.setAttribute('data-aos', 'fade-up');
+            card.setAttribute('data-aos-delay', (index * 100).toString());
+        });
+
+        // Add floating animation to hero image
+        const heroImage = document.querySelector('.hidden.md\\:block.md\\:w-1\\/2 img');
+        if (heroImage) {
+            heroImage.classList.add('floating-image');
+        }
+
+        // Service data
+        const services = [
+            {
+                id: 1,
+                title: "Email Marketing Automation",
+                category: "Marketing & Growth",
+                icon: "fas fa-envelope",
+                description: "Automate your email campaigns with personalized content that converts.",
+                shortDescription: "Automate personalized email campaigns",
+                benefits: [
+                    "Save 10+ hours per week on email management",
+                    "Increase open rates by 30-50%",
+                    "Automatically segment your audience",
+                    "Integrates with major CRMs"
+                ],
+                pricing: "$500 setup + $300/month"
+            },
+            {
+                id: 2,
+                title: "SEO Blog Post Generator",
+                category: "Marketing & Growth",
+                icon: "fas fa-search",
+                description: "Create SEO-optimized blog content automatically to drive organic traffic.",
+                shortDescription: "Generate SEO content automatically",
+                benefits: [
+                    "Publish 3-5 high-quality posts per week",
+                    "Target local Austin keywords",
+                    "Maintain consistent brand voice",
+                    "Includes basic image generation"
+                ],
+                pricing: "$500 setup + $250/month"
+            },
+            {
+                id: 3,
+                title: "Review Responder Bot",
+                category: "Marketing & Growth",
+                icon: "fas fa-star",
+                description: "Automatically respond to Google and Yelp reviews with personalized messages.",
+                shortDescription: "Automate review responses",
+                benefits: [
+                    "Respond to all reviews within 24 hours",
+                    "Maintain professional tone",
+                    "Flag negative reviews for your attention",
+                    "Improve local SEO rankings"
+                ],
+                pricing: "$400 setup + $200/month"
+            },
+            {
+                id: 4,
+                title: "Social Media Post Generator",
+                category: "Marketing & Growth",
+                icon: "fab fa-instagram",
+                description: "Automatically create and schedule engaging social media content.",
+                shortDescription: "Automate social media content",
+                benefits: [
+                    "3-5 posts per week for each platform",
+                    "Local Austin-centric content",
+                    "Hashtag optimization",
+                    "Basic analytics reporting"
+                ],
+                pricing: "$500 setup + $350/month"
+            },
+            {
+                id: 5,
+                title: "Google Ad Copy Creator",
+                category: "Marketing & Growth",
+                icon: "fab fa-google",
+                description: "Generate high-converting ad copy for your Google Ads campaigns.",
+                shortDescription: "Create optimized ad copy",
+                benefits: [
+                    "A/B test multiple variations",
+                    "Local Austin targeting",
+                    "Seasonal campaign adjustments",
+                    "Performance monitoring"
+                ],
+                pricing: "$400 setup + $200/month"
+            },
+            {
+                id: 6,
+                title: "AI Customer Service Desk",
+                category: "Customer Service",
+                icon: "fas fa-headset",
+                description: "Handle common customer inquiries automatically with our AI assistant.",
+                shortDescription: "Automate customer inquiries",
+                benefits: [
+                    "24/7 customer support",
+                    "Handle 60-80% of common questions",
+                    "Escalate complex issues to your team",
+                    "Multilingual support available"
+                ],
+                pricing: "$600 setup + $400/month"
+            },
+            {
+                id: 7,
+                title: "Smart FAQ Generator",
+                category: "Customer Service",
+                icon: "fas fa-question-circle",
+                description: "Automatically create and maintain a comprehensive FAQ section for your website.",
+                shortDescription: "Automate FAQ creation",
+                benefits: [
+                    "Reduce repetitive customer questions",
+                    "Update based on actual customer inquiries",
+                    "Integrate with your knowledge base",
+                    "Self-learning over time"
+                ],
+                pricing: "$400 setup + $150/month"
+            },
+            {
+                id: 8,
+                title: "Inbound Email Auto-Responder",
+                category: "Customer Service",
+                icon: "fas fa-reply",
+                description: "Automatically categorize and respond to common email inquiries.",
+                shortDescription: "Automate email responses",
+                benefits: [
+                    "Instant acknowledgment of all emails",
+                    "Handle common requests automatically",
+                    "Route complex issues appropriately",
+                    "Reduce email response time by 80%"
+                ],
+                pricing: "$500 setup + $300/month"
+            },
+            {
+                id: 9,
+                title: "Call Summarizer Bot",
+                category: "Customer Service",
+                icon: "fas fa-phone",
+                description: "Automatically transcribe and summarize customer calls for easy follow-up.",
+                shortDescription: "Summarize customer calls",
+                benefits: [
+                    "Never miss important details",
+                    "Identify common customer pain points",
+                    "Create searchable call database",
+                    "Integration with major VoIP systems"
+                ],
+                pricing: "$600 setup + $350/month"
+            },
+            {
+                id: 10,
+                title: "Appointment Scheduler",
+                category: "Customer Service",
+                icon: "fas fa-calendar-check",
+                description: "AI-powered scheduling that handles rescheduling, reminders and follow-ups.",
+                shortDescription: "Automate appointment management",
+                benefits: [
+                    "Reduce no-shows by 40%",
+                    "Automatic reminders via text/email",
+                    "Handle rescheduling automatically",
+                    "Integrates with Calendly/Google Calendar"
+                ],
+                pricing: "$500 setup + $250/month"
+            },
+            {
+                id: 11,
+                title: "SOP/Document Builder",
+                category: "Business Operations",
+                icon: "fas fa-file-alt",
+                description: "Automatically create and maintain standard operating procedures for your business.",
+                shortDescription: "Automate SOP creation",
+                benefits: [
+                    "Onboard new employees faster",
+                    "Ensure consistent processes",
+                    "Easy to update as processes change",
+                    "Searchable knowledge base"
+                ],
+                pricing: "$600 setup + $300/month"
+            },
+            {
+                id: 12,
+                title: "AI Proposal & Invoice Writer",
+                category: "Business Operations",
+                icon: "fas fa-file-invoice-dollar",
+                description: "Generate professional proposals and invoices tailored to each client.",
+                shortDescription: "Automate proposals & invoices",
+                benefits: [
+                    "Save 5+ hours per week",
+                    "Maintain consistent branding",
+                    "Automate follow-ups",
+                    "Integration with QuickBooks/Xero"
+                ],
+                pricing: "$500 setup + $250/month"
+            },
+            {
+                id: 13,
+                title: "Hiring Assistant",
+                category: "Business Operations",
+                icon: "fas fa-user-tie",
+                description: "Screen resumes and conduct initial candidate interviews automatically.",
+                shortDescription: "Automate resume screening",
+                benefits: [
+                    "Reduce hiring time by 50%",
+                    "Eliminate bias in initial screening",
+                    "Score candidates objectively",
+                    "Schedule interviews automatically"
+                ],
+                pricing: "$600 setup + $350/month"
+            },
+            {
+                id: 14,
+                title: "Lead Qualification Bot",
+                category: "Business Operations",
+                icon: "fas fa-bullseye",
+                description: "Automatically qualify incoming leads based on your criteria.",
+                shortDescription: "Automate lead qualification",
+                benefits: [
+                    "Focus only on high-quality leads",
+                    "24/7 lead capture",
+                    "Basic CRM integration",
+                    "Score leads automatically"
+                ],
+                pricing: "$500 setup + $300/month"
+            },
+            {
+                id: 15,
+                title: "Reputation Monitoring Dashboard",
+                category: "Business Operations",
+                icon: "fas fa-chart-line",
+                description: "Track your online reputation across multiple platforms with AI-powered insights.",
+                shortDescription: "Monitor your online reputation",
+                benefits: [
+                    "Real-time alerts for mentions",
+                    "Sentiment analysis",
+                    "Competitor benchmarking",
+                    "Custom reporting"
+                ],
+                pricing: "$400 setup + $200/month"
+            }
+        ];
+        // DOM elements
+        const servicesContainer = document.querySelector('#services .grid');
+        const serviceModal = document.getElementById('service-modal');
+        const modalTitle = document.getElementById('modal-service-title');
+        const modalCategory = document.getElementById('modal-service-category');
+        const modalIcon = document.getElementById('modal-service-icon');
+        const modalDescription = document.getElementById('modal-service-description');
+        const modalBenefits = document.getElementById('modal-service-benefits');
+        const modalPricing = document.getElementById('modal-service-pricing');
+        const closeModalBtn = document.getElementById('close-modal');
+        const modalBookBtn = document.getElementById('modal-book-btn');
+        const bookConsultationBtn = document.getElementById('book-consultation-btn');
+        const calendlyModal = document.getElementById('calendly-modal');
+        const closeCalendlyBtn = document.getElementById('close-calendly');
+        const calendlyContainer = document.getElementById('calendly-container');
+        // Render service cards
+        function renderServiceCards() {
+            services.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'service-card bg-white p-6 rounded-lg shadow-sm transition duration-300 ease-in-out cursor-pointer';
+                card.innerHTML = `
+                    <div class="flex items-start">
+                        <div class="text-blue-500 text-3xl mr-4">
+                            <i class="${service.icon}"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">${service.title}</h3>
+                            <p class="text-gray-600 mb-4">${service.shortDescription}</p>
+                            <button class="text-blue-600 hover:text-blue-800 font-medium">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                `;
+                card.addEventListener('click', () => openServiceModal(service));
+                servicesContainer.appendChild(card);
+            });
+        }
+        // Open service modal
+        function openServiceModal(service) {
+            modalTitle.textContent = service.title;
+            modalCategory.textContent = service.category;
+            modalIcon.innerHTML = `<i class="${service.icon}"></i>`;
+            modalDescription.textContent = service.description;
+            
+            // Clear previous benefits
+            modalBenefits.innerHTML = '';
+            
+            // Add benefits
+            service.benefits.forEach(benefit => {
+                const li = document.createElement('li');
+                li.textContent = benefit;
+                modalBenefits.appendChild(li);
+            });
+            
+            modalPricing.textContent = service.pricing;
+            
+            // Show modal
+            serviceModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        // Close service modal
+        function closeServiceModal() {
+            serviceModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        // Open Calendly modal
+        function openCalendlyModal() {
+            calendlyModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            
+            // Initialize Calendly widget if not already initialized
+            if (!window.Calendly) {
+                const script = document.createElement('script');
+                script.src = 'https://assets.calendly.com/assets/external/widget.js';
+                script.async = true;
+                document.body.appendChild(script);
+                
+                script.onload = function() {
+                    Calendly.initInlineWidget({
+                        url: 'https://calendly.com/your-calendly-url',
+                        parentElement: document.getElementById('calendly-container'),
+                        prefill: {},
+                        utm: {}
+                    });
+                };
+            } else {
+                Calendly.initInlineWidget({
+                    url: 'https://calendly.com/your-calendly-url',
+                    parentElement: document.getElementById('calendly-container'),
+                    prefill: {},
+                    utm: {}
+                });
+            }
+        }
+        // Close Calendly modal
+        function closeCalendlyModal() {
+            calendlyModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', renderServiceCards);
+        closeModalBtn.addEventListener('click', closeServiceModal);
+        modalBookBtn.addEventListener('click', openCalendlyModal);
+        bookConsultationBtn.addEventListener('click', openCalendlyModal);
+        closeCalendlyBtn.addEventListener('click', closeCalendlyModal);
+        // Close modals when clicking outside content
+        serviceModal.addEventListener('click', (e) => {
+            if (e.target === serviceModal) {
+                closeServiceModal();
+            }
+        });
+        calendlyModal.addEventListener('click', (e) => {
+            if (e.target === calendlyModal) {
+                closeCalendlyModal();
+            }
+        });
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=ethoakiko/atlasai-solutions-2" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+</html>

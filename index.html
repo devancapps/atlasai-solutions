@@ -171,6 +171,35 @@
         #mc_embed_signup .indicates-required {
             display: none;
         }
+
+        .how-it-works-section {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-it-works-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .how-it-works-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .how-it-works-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body class="font-sans bg-gray-50 text-gray-800">
@@ -243,31 +272,31 @@
     </section>
 
     <!-- How It Works Section -->
-    <section id="how-it-works" class="py-20 bg-gray-50">
+    <section id="how-it-works" class="how-it-works-section py-20 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">How It Works</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-white mb-4">How It Works</h2>
+                <p class="text-xl text-white opacity-90 max-w-3xl mx-auto">
                     Getting started with our AI solutions is simple and straightforward
                 </p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="how-it-works-step p-6 bg-white rounded-lg shadow-sm">
+                <div class="how-it-works-card p-6 rounded-lg">
                     <h3 class="text-xl font-bold mb-4">Choose Your Service</h3>
-                    <p class="text-gray-600">
+                    <p class="text-white opacity-90">
                         Browse our selection of AI services and pick the one that best fits your business needs.
                     </p>
                 </div>
-                <div class="how-it-works-step p-6 bg-white rounded-lg shadow-sm">
+                <div class="how-it-works-card p-6 rounded-lg">
                     <h3 class="text-xl font-bold mb-4">Book Your Consultation</h3>
-                    <p class="text-gray-600">
+                    <p class="text-white opacity-90">
                         Schedule a free 30-minute consultation to discuss your specific requirements and goals.
                     </p>
                 </div>
-                <div class="how-it-works-step p-6 bg-white rounded-lg shadow-sm">
+                <div class="how-it-works-card p-6 rounded-lg">
                     <h3 class="text-xl font-bold mb-4">Watch AI Grow Your Business</h3>
-                    <p class="text-gray-600">
+                    <p class="text-white opacity-90">
                         We implement the solution and you enjoy the benefits of automation and increased efficiency.
                     </p>
                 </div>

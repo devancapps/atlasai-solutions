@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Dev: character encoding and viewport for responsiveness -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AtlasAI Solutions - AI Services for Austin Businesses</title>
     <meta name="description" content="AI-powered solutions to help local Austin businesses automate and grow. Book your free consultation today.">
+
+    <!-- Dev: Tailwind CSS CDN for utility-first styling -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Dev: Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Dev: AOS (Animate On Scroll) CSS & JS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Dev: jQuery must load before Mailchimp's validation script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Dev: Mailchimp embed styles & validation -->
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+    <script src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+
+    <!-- Dev: Calendly widget loader (async) -->
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+    <!-- Dev: Custom component and utility CSS -->
     <style>
+        /* Service card styles with hover effects */
         .service-card {
             background: linear-gradient(145deg, #ffffff 0%, #f3f4f6 100%);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -33,6 +48,7 @@
             color: #4f46e5;
         }
 
+        /* Hero section background & pattern overlay */
         .hero-section {
             background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 50%, #2563eb 100%);
             position: relative;
@@ -47,8 +63,10 @@
             right: 0;
             bottom: 0;
             background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
         }
 
+        /* Primary button with gradient + shine animation */
         .btn-primary {
             background: linear-gradient(to right, #4f46e5, #3b82f6);
             transition: all 0.3s ease;
@@ -77,6 +95,7 @@
             transform: translateX(100%);
         }
 
+        /* Stats & testimonial cards styling */
         .stats-card {
             background: linear-gradient(145deg, #ffffff 0%, #f3f4f6 100%);
             border-radius: 1rem;
@@ -101,11 +120,13 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
+        /* Modal overlay blur + backdrop */
         .modal-overlay {
             background-color: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(5px);
         }
 
+        /* Floating image keyframes */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
@@ -116,7 +137,7 @@
             animation: float 6s ease-in-out infinite;
         }
 
-        /* Mailchimp form styling */
+        /* Mailchimp form overrides for transparency & layout */
         #mc_embed_signup {
             background: transparent;
             clear: left;
@@ -138,6 +159,7 @@
             padding: 0.75rem;
             border-radius: 0.375rem;
             border: 1px solid #e5e7eb;
+            color: #000000;
         }
         #mc_embed_signup .button {
             background: linear-gradient(to right, #ffffff, #f3f4f6);
@@ -172,6 +194,7 @@
             display: none;
         }
 
+        /* How-it-works section glassmorphism cards */
         .how-it-works-section {
             background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             position: relative;
@@ -203,7 +226,7 @@
     </style>
 </head>
 <body class="font-sans bg-gray-50 text-gray-800">
-    <!-- Navigation -->
+    <!-- Dev: Navigation bar with responsive design -->
     <nav class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
@@ -220,15 +243,15 @@
                     <a href="#testimonials" class="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium">Testimonials</a>
                 </div>
                 <div class="flex items-center">
-                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">
+                    <button onclick="openCalendlyModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">
                         Free Consultation
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Dev: Hero section with gradient background and floating image -->
     <section class="hero-section py-20 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="md:flex md:items-center md:justify-between">
@@ -240,12 +263,12 @@
                         Automate, optimize, and scale your local business with our specialized AI solutions.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#services" class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-md text-lg font-semibold transition duration-150 ease-in-out">
+                        <button onclick="document.querySelector('#services').scrollIntoView({behavior: 'smooth'})" class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-md text-lg font-semibold transition duration-150 ease-in-out cursor-pointer">
                             Explore Services
-                        </a>
-                        <a href="#contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-md text-lg font-semibold transition duration-150 ease-in-out">
+                        </button>
+                        <button onclick="openCalendlyModal()" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-md text-lg font-semibold transition duration-150 ease-in-out cursor-pointer">
                             Free Consultation
-                        </a>
+                        </button>
                     </div>
                 </div>
                 <div class="hidden md:block md:w-1/2">
@@ -255,7 +278,7 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Dev: Services section with dynamic card rendering -->
     <section id="services" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -271,7 +294,7 @@
         </div>
     </section>
 
-    <!-- How It Works Section -->
+    <!-- Dev: How It Works section with glassmorphism cards -->
     <section id="how-it-works" class="how-it-works-section py-20 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -304,7 +327,7 @@
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- Dev: About section with team image and stats -->
     <section id="about" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="md:flex md:items-center md:space-x-12">
@@ -338,7 +361,7 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- Dev: Testimonials section with client feedback -->
     <section id="testimonials" class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -422,7 +445,7 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- Dev: CTA section with Calendly integration -->
     <section id="contact" class="py-20 bg-blue-600 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-3xl font-bold mb-6">Ready to Transform Your Business with AI?</h2>
@@ -436,7 +459,7 @@
             <div class="mt-12 max-w-md mx-auto">
                 <p class="mb-4">Not ready to book yet? Get our free guide:</p>
                 
-                <!-- Mailchimp Form -->
+                <!-- Dev: Mailchimp form with custom styling -->
                 <div id="mc_embed_signup">
                     <form action="https://app.us4.list-manage.com/subscribe/post?u=85f4a46b7d023c428aee2d18d&amp;id=db3c6576ba&amp;f_id=00c067e8f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
                         <div id="mc_embed_signup_scroll">
@@ -461,13 +484,11 @@
                         </div>
                     </form>
                 </div>
-                <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-                <script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Dev: Footer with navigation and social links -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -516,7 +537,7 @@
         </div>
     </footer>
 
-    <!-- Service Modal -->
+    <!-- Dev: Service modal for detailed service information -->
     <div id="service-modal" class="fixed inset-0 z-50 hidden">
         <div class="modal-overlay absolute inset-0"></div>
         <div class="absolute inset-0 flex items-center justify-center p-4">
@@ -559,7 +580,7 @@
         </div>
     </div>
 
-    <!-- Calendly Modal -->
+    <!-- Dev: Calendly modal for scheduling -->
     <div id="calendly-modal" class="fixed inset-0 z-50 hidden">
         <div class="modal-overlay absolute inset-0"></div>
         <div class="absolute inset-0 flex items-center justify-center p-4">
@@ -577,37 +598,24 @@
         </div>
     </div>
 
+    <!-- Dev: Main JavaScript block -->
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
-        
-        // Add data-aos attributes to elements
-        document.querySelectorAll('.service-card').forEach((card, index) => {
-            card.setAttribute('data-aos', 'fade-up');
-            card.setAttribute('data-aos-delay', (index * 100).toString());
-        });
+        // Initialize AOS when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render dynamic service cards
+            renderServiceCards();
 
-        document.querySelectorAll('.stats-card').forEach((card, index) => {
-            card.setAttribute('data-aos', 'fade-up');
-            card.setAttribute('data-aos-delay', (index * 100).toString());
+            // After cards exist, add fade-up animations
+            document.querySelectorAll('.service-card').forEach((card, i) => {
+                card.setAttribute('data-aos', 'fade-up');
+                card.setAttribute('data-aos-delay', i * 100);
+            });
+
+            // Finally, refresh AOS to pick up new elements
+            AOS.init({ duration: 1000, once: true, offset: 100 });
         });
 
-        document.querySelectorAll('.testimonial-card').forEach((card, index) => {
-            card.setAttribute('data-aos', 'fade-up');
-            card.setAttribute('data-aos-delay', (index * 100).toString());
-        });
-
-        // Add floating animation to hero image
-        const heroImage = document.querySelector('.hidden.md\\:block.md\\:w-1\\/2 img');
-        if (heroImage) {
-            heroImage.classList.add('floating-image');
-        }
-
-        // Service data
+        // Service data array
         const services = [
             {
                 id: 1,
@@ -835,6 +843,7 @@
                 pricing: "$400 setup + $200/month"
             }
         ];
+
         // DOM elements
         const servicesContainer = document.querySelector('#services .grid');
         const serviceModal = document.getElementById('service-modal');
@@ -850,6 +859,7 @@
         const calendlyModal = document.getElementById('calendly-modal');
         const closeCalendlyBtn = document.getElementById('close-calendly');
         const calendlyContainer = document.getElementById('calendly-container');
+
         // Render service cards
         function renderServiceCards() {
             services.forEach(service => {
@@ -873,6 +883,7 @@
                 servicesContainer.appendChild(card);
             });
         }
+
         // Open service modal
         function openServiceModal(service) {
             modalTitle.textContent = service.title;
@@ -896,11 +907,13 @@
             serviceModal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
+
         // Close service modal
         function closeServiceModal() {
             serviceModal.classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
+
         // Open Calendly modal
         function openCalendlyModal() {
             calendlyModal.classList.remove('hidden');
@@ -930,28 +943,32 @@
                 });
             }
         }
+
         // Close Calendly modal
         function closeCalendlyModal() {
             calendlyModal.classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
+
         // Event listeners
-        document.addEventListener('DOMContentLoaded', renderServiceCards);
         closeModalBtn.addEventListener('click', closeServiceModal);
         modalBookBtn.addEventListener('click', openCalendlyModal);
         bookConsultationBtn.addEventListener('click', openCalendlyModal);
         closeCalendlyBtn.addEventListener('click', closeCalendlyModal);
+
         // Close modals when clicking outside content
         serviceModal.addEventListener('click', (e) => {
             if (e.target === serviceModal) {
                 closeServiceModal();
             }
         });
+
         calendlyModal.addEventListener('click', (e) => {
             if (e.target === calendlyModal) {
                 closeCalendlyModal();
             }
         });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -962,5 +979,5 @@
             });
         });
     </script>
-<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=ethoakiko/atlasai-solutions-2" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+</body>
 </html>

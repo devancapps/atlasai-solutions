@@ -28,6 +28,7 @@
     <style>
         /* Service card styles with hover effects */
         .service-card {
+            position: relative;
             background: linear-gradient(145deg, #ffffff 0%, #f3f4f6 100%);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             transition: all 0.3s ease;
@@ -37,6 +38,24 @@
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             background: linear-gradient(145deg, #ffffff 0%, #e7eaf4 100%);
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 7rem;
+            height: 3rem;
+            background: rgba(75, 130, 247, 0.99);
+            clip-path: polygon(0 100%, 100% 0, 100% 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .service-card > * {
+            position: relative;
+            z-index: 2;
         }
 
         .service-card i {
@@ -223,6 +242,36 @@
             background: rgba(255, 255, 255, 0.15);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
         }
+
+        @keyframes marquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .animate-marquee {
+            display: flex;
+            width: 200%;
+            animation: marquee 30s linear infinite;
+            gap: 2rem;
+        }
+
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        .brand-logo {
+            flex: 0 0 auto;
+            height: 2.5rem;
+            object-fit: contain;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            filter: grayscale(70%);
+        }
+
+        .brand-logo:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
     </style>
 </head>
 <body class="font-sans bg-gray-50 text-gray-800">
@@ -274,6 +323,49 @@
                 <div class="hidden md:block md:w-1/2">
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="AI and business growth" class="rounded-lg shadow-xl floating-image">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dev: Trusted By section with marquee animation -->
+    <section id="trusted-by" class="w-full bg-white py-16">
+        <!-- Title -->
+        <div class="max-w-7xl mx-auto px-4 text-center mb-8">
+            <p class="text-gray-700 text-2xl md:text-3xl font-medium">
+                Setting Our Bar with the <span class="font-bold text-gray-900">World's Best</span>
+            </p>
+        </div>
+
+        <!-- Marquee wrapper -->
+        <div class="overflow-hidden">
+            <div class="flex animate-marquee">
+                <!-- FIRST PASS: real transparent wordmarks -->
+                <img src="/images/forbes.png"
+                    alt="Forbes" class="brand-logo" />
+                <img src="/images/techradar.png"
+                    alt="TechRadar" class="brand-logo" />
+                <img src="/images/venturebeat.png"
+                    alt="VentureBeat" class="brand-logo" />
+                <img src="/images/entrepreneur.png"
+                    alt="Entrepreneur" class="brand-logo" />
+                <img src="/images/marketwatch.png"
+                    alt="MarketWatch" class="brand-logo" />
+                <img src="/images/yahoofinance.png"
+                    alt="Yahoo Finance" class="brand-logo" />
+
+                <!-- SECOND PASS: duplicate for seamless loop -->
+                <img src="/images/forbes.png"
+                    alt="Forbes" class="brand-logo" />
+                <img src="/images/techradar.png"
+                    alt="TechRadar" class="brand-logo" />
+                <img src="/images/venturebeat.png"
+                    alt="VentureBeat" class="brand-logo" />
+                <img src="/images/entrepreneur.png"
+                    alt="Entrepreneur" class="brand-logo" />
+                <img src="/images/marketwatch.png"
+                    alt="MarketWatch" class="brand-logo" />
+                <img src="/images/yahoofinance.png"
+                    alt="Yahoo Finance" class="brand-logo" />
             </div>
         </div>
     </section>
